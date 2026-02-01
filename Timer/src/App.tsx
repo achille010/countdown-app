@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Helmet }  from "react-helmet";
 import clock from "../public/vite.svg"
 
 function App() {
@@ -53,7 +52,6 @@ function App() {
   return (
     <>
       <div style={{backgroundColor: "#36454F", height: "100vh", color: "white"}}>
-        <Helmet>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
             rel="preconnect"
@@ -65,7 +63,6 @@ function App() {
             rel="stylesheet"
           />
           <script src="https://kit.fontawesome.com/05dfd329a2.js" crossOrigin="anonymous" />
-        </Helmet>
         <div
           style={{
             fontFamily: "IBM Plex Mono",
