@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import clock from "../public/vite.svg"
+import clock from "../public/vite.svg";
 
 function App() {
   const [hours, setHours] = useState<number>(0);
@@ -32,7 +32,10 @@ function App() {
     setIsRunning(true);
   };
 
-  const pauseTimer = () => {setIsRunning(false); setPaused(true)}
+  const pauseTimer = () => {
+    setIsRunning(false);
+    setPaused(true);
+  };
 
   const resetTimer = () => {
     setIsRunning(false);
@@ -51,18 +54,23 @@ function App() {
 
   return (
     <>
-      <div style={{backgroundColor: "#36454F", height: "100vh", color: "white"}}>
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link
-            rel="preconnect"
-            href="https://fonts.gstatic.com"
-            crossOrigin="anonymous"
-          />
-          <link
-            href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;200;300;400;500;600;700&display=swap"
-            rel="stylesheet"
-          />
-          <script src="https://kit.fontawesome.com/05dfd329a2.js" crossOrigin="anonymous" />
+      <div
+        style={{ backgroundColor: "#36454F", height: "100vh", color: "white" }}
+      >
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;200;300;400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+        <script
+          src="https://kit.fontawesome.com/05dfd329a2.js"
+          crossOrigin="anonymous"
+        />
         <div
           style={{
             fontFamily: "IBM Plex Mono",
@@ -111,27 +119,44 @@ function App() {
             </div>
           )}
           <div style={{ marginTop: "1rem" }}>
-            {(!isRunning && !paused) && (
-              <button onClick={startTimer} style={{ marginRight: "5px" }} className="border border-white bg-white text-black rounded-lg px-1 transition-all duration-300 ease-in-out hover:text-white hover:bg-black hover:border-black">
+            {!isRunning && !paused && (
+              <button
+                onClick={startTimer}
+                style={{ marginRight: "5px" }}
+                className="border border-white bg-white text-black rounded-lg px-1 transition-all duration-300 ease-in-out hover:text-white hover:bg-black hover:border-black"
+              >
                 Start
               </button>
             )}
 
-            {(isRunning && !paused) && (
-              <button onClick={pauseTimer} style={{ marginRight: "5px" }} className="border border-white text-black bg-white rounded-lg px-1 transition-all duration-200 ease-in-out hover:text-white hover:bg-black hover:border-black">
+            {isRunning && !paused && (
+              <button
+                onClick={pauseTimer}
+                style={{ marginRight: "5px" }}
+                className="border border-white text-black bg-white rounded-lg px-1 transition-all duration-200 ease-in-out hover:text-white hover:bg-black hover:border-black"
+              >
                 Pause
               </button>
             )}
-            {(paused) && (
-              <button onClick={startTimer} style={{ marginRight: "5px" }} className="border border-white text-black bg-white rounded-lg px-1 transition-all duration-200 ease-in-out hover:text-white hover:bg-black hover:border-black">
+            {paused && (
+              <button
+                onClick={startTimer}
+                style={{ marginRight: "5px" }}
+                className="border border-white text-black bg-white rounded-lg px-1 transition-all duration-200 ease-in-out hover:text-white hover:bg-black hover:border-black"
+              >
                 Resume
               </button>
             )}
-            <button onClick={resetTimer} className="border border-white bg-white text-black rounded-lg px-1 transition-all duration-200 ease-in-out hover:text-white hover:bg-black hover:border-black">Reset</button>
+            <button
+              onClick={resetTimer}
+              className="border border-white bg-white text-black rounded-lg px-1 transition-all duration-200 ease-in-out hover:text-white hover:bg-black hover:border-black"
+            >
+              Reset
+            </button>
           </div>
           <h2 style={{ marginTop: "2rem", fontSize: "2rem" }}>
-            <img src={clock} alt="Clock" className="inline w-10 h-10 mr-2"/>
-            : {timeLeft > 0 ? displayTime() : "00:00:00"}
+            <img src={clock} alt="Clock" className="inline w-10 h-10 mr-2" />:{" "}
+            {timeLeft > 0 ? displayTime() : "00:00:00"}
           </h2>
         </div>
       </div>
