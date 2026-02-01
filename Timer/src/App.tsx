@@ -8,6 +8,7 @@ function App() {
   const [seconds, setSeconds] = useState<number>(0);
   const [timeLeft, setTimeLeft] = useState<number>(0);
   const [isRunning, setIsRunning] = useState<boolean>(false);
+  const [paused, setPaused] = useState<boolean>(false);
 
   useEffect(() => {
     let timer: ReturnType<typeof setInterval>;
@@ -31,7 +32,7 @@ function App() {
     setIsRunning(true);
   };
 
-  const pauseTimer = () => setIsRunning(false);
+  const pauseTimer = () => {setIsRunning(false); setPaused(true)}
 
   const resetTimer = () => {
     setIsRunning(false);
@@ -41,7 +42,6 @@ function App() {
     setSeconds(0);
   };
 
-  // Format display
   const displayTime = (): string => {
     const h = String(Math.floor(timeLeft / 3600)).padStart(2, "0");
     const m = String(Math.floor((timeLeft % 3600) / 60)).padStart(2, "0");
@@ -113,14 +113,20 @@ function App() {
             </div>
           )}
           <div style={{ marginTop: "1rem" }}>
-            {!isRunning && (
+            {(!isRunning && !paused) && (
               <button onClick={startTimer} style={{ marginRight: "5px" }} className="border border-white bg-white text-black rounded-lg px-1 transition-all duration-300 ease-in-out hover:text-white hover:bg-black hover:border-black">
                 Start
               </button>
             )}
-            {isRunning && (
-              <button onClick={pauseTimer} style={{ marginRight: "5px" }} className="border border-white bg-white rounded-lg px-1 transition-all duration-200 ease-in-out hover:text-white hover:bg-black hover:border-black">
+
+            {(isRunning && !paused) && (
+              <button onClick={pauseTimer} style={{ marginRight: "5px" }} className="border border-white text-black bg-white rounded-lg px-1 transition-all duration-200 ease-in-out hover:text-white hover:bg-black hover:border-black">
                 Pause
+              </button>
+            )}
+            {(paused) && (
+              <button onClick={startTimer} style={{ marginRight: "5px" }} className="border border-white text-black bg-white rounded-lg px-1 transition-all duration-200 ease-in-out hover:text-white hover:bg-black hover:border-black">
+                Resume
               </button>
             )}
             <button onClick={resetTimer} className="border border-white bg-white text-black rounded-lg px-1 transition-all duration-200 ease-in-out hover:text-white hover:bg-black hover:border-black">Reset</button>
