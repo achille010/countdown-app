@@ -29,6 +29,7 @@ function App() {
       if (totalSeconds > 0) setTimeLeft(totalSeconds);
       else return;
     }
+    setPaused(false);
     setIsRunning(true);
   };
 
