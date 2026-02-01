@@ -1,73 +1,106 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<div align="center">
 
-Currently, two official plugins are available:
+<img src="https://skillicons.dev/icons?i=react,ts,tailwindcss,vite&theme=dark&perline=4" alt="React, TypeScript, Tailwind CSS, Vite" />
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Built with React, TypeScript, Tailwind CSS & Vite**
+# Countdown App
 
-## React Compiler
+</div>
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+A modular React, Vite and Tailwind app to perform countdown timer operations.
 
-## Expanding the ESLint configuration
+## Overview
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Countdown App is a modular React application scaffolded with Vite and styled using Tailwind CSS. It provides a clean interface for setting and running countdown timers, with the codebase split into reusable components for maintainability and scalability.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## How It Works
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+The application follows a modular structure, separating timer logic and UI into distinct components:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+**src/**: Contains all React components and TypeScript logic
+```typescript
+// Modular components handling timer state, display, and controls
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+**public/**: Serves static assets for the app
 ```
+// Static files and the entry HTML served by Vite
+```
+
+**Timer copy**: A backup/reference copy of the timer implementation
+```
+// Alternate version of the timer logic for reference
+```
+
+### Core Functionality
+
+1. **Countdown Timer**: Set hours, minutes, and seconds and watch the timer count down in real time
+2. **Modular Components**: Timer logic is broken into reusable pieces for easy maintenance and extension
+3. **Reactive UI**: React state drives live updates to the display on every tick
+4. **Tailwind Styling**: Utility-first CSS keeps the interface clean and responsive across devices
+
+### The Countdown Process
+
+When a user starts a countdown:
+1. The user inputs the desired hours, minutes, and/or seconds
+2. React calculates the target end time from the current timestamp
+3. A `setInterval` decrements the remaining time every second
+4. The UI re-renders with updated values on each tick
+5. When the timer hits zero, it stops and signals completion to the user
+
+### Key Concepts Demonstrated
+
+- **React Hooks**: `useState` and `useEffect` for managing timer state and intervals
+- **TypeScript**: Type-safe props and logic across all components
+- **Modular Design**: Separation of concerns with dedicated components for input, display, and controls
+- **Tailwind CSS**: Rapid, responsive styling with utility classes
+- **Vite**: Fast bundling and instant hot module replacement during development
+- **Interval Cleanup**: Proper `clearInterval` usage inside `useEffect` to prevent memory leaks
+
+## Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/achille010/countdown-app.git
+cd countdown-app
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
+```bash
+npm run dev
+```
+
+4. Open your browser to `http://localhost:5173`
+
+## Limitations
+
+- No persistent storage (timer resets on page refresh)
+- No alarm or sound notification on completion
+- No support for multiple simultaneous timers
+- No backend integration
+
+This is intentionally minimal to demonstrate a clean modular React + TypeScript + Tailwind setup.
+
+## Requirements
+
+- Node.js 18 or higher
+- npm or yarn
+- Web browser
+
+## Contributing
+
+Contributions are welcome! Feel free to fork this repository and submit pull requests for improvements.
+
+## License
+
+MIT License - Read details from the LICENSE file
+
+---
+
+*Built as a modular countdown timer app using React, TypeScript & Tailwind CSS*
