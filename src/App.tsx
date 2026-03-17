@@ -154,8 +154,12 @@ function App() {
             </button>
           </div>
           <h2 style={{ marginTop: "2rem", fontSize: "2rem" }}>
-            <img src="/vite.svg" alt="Clock" className="inline w-10 h-10 mr-2" />:{" "}
-            {timeLeft > 0 ? displayTime() : "00:00:00"}
+            <img
+              src="/vite.svg"
+              alt="Clock"
+              className="inline w-10 h-10 mr-2"
+            />
+            : {timeLeft > 0 ? displayTime() : "00:00:00"}
           </h2>
         </div>
       </div>
