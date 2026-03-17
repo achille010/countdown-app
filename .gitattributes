@@ -1,2 +1,2 @@
-*.html -linguistic-detectable
-*.css -linguistic-detectable
+*.html linguistic-detectable=false
+*.css linguistic-detectable=false
